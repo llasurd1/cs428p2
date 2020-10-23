@@ -28,6 +28,7 @@ int main() {
 	memset(&servaddr, 0, sizeof(servaddr)); 
 	memset(&cliaddr, 0, sizeof(cliaddr)); 
 	
+	
 	// Fill server information 
 	servaddr.sin_family = AF_INET; // IPv4 
 	servaddr.sin_addr.s_addr = INADDR_ANY; // localhost
@@ -37,7 +38,7 @@ int main() {
 	bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr));
 	
 	// random generator
-	srand(time(0));
+	//srand(time(0));
 
         while (1) {
 		//Receive the client packet along with the address it is coming from
@@ -47,7 +48,7 @@ int main() {
 
 		//If a random number in the range of 0 to 10 is less than 4,
 		//we consider the packet lost and do not respond
-		if (rand()%10 < 4) continue;
+		//if (rand()%10 < 4) continue;
 
 		//Otherwise, the server responds
 		sendto(sockfd, (const char *)buffer, strlen(buffer), 
